@@ -153,7 +153,7 @@ public class FilaService {
             case "Emergência", "Emergencia", "EM" -> "EM";
             default -> "CG";
         };
-        Long total = filaRepo.countSenhaHoje(prefixo);
+        Long total = filaRepo.countSenhaPorPrefixo(prefixo);
         long count = (total != null ? total : 0L) + 1;
         return String.format("%s%03d", prefixo, count);
     }

@@ -80,8 +80,8 @@ public interface FilaAtendimentoRepository extends JpaRepository<FilaAtendimento
     Optional<FilaAtendimento> findBySenha(String senha);
     long countByStatus(StatusFila status);
 
-    @Query("SELECT COUNT(f) FROM FilaAtendimento f WHERE f.senha LIKE CONCAT(:prefixo, '%') AND DATE(f.dataEntrada) = CURRENT_DATE")
-    Long countSenhaHoje(@Param("prefixo") String prefixo);
+    @Query("SELECT COUNT(f) FROM FilaAtendimento f WHERE f.senha LIKE CONCAT(:prefixo, '%')")
+    Long countSenhaPorPrefixo(@Param("prefixo") String prefixo);
 
     @Query("SELECT f FROM FilaAtendimento f WHERE f.paciente.id = :pacienteId ORDER BY f.dataEntrada DESC")
     List<FilaAtendimento> findHistoricoPorPaciente(@Param("pacienteId") Long pacienteId);
